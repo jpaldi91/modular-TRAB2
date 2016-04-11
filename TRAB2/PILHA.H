@@ -109,7 +109,7 @@ typedef struct PIL_tgPilha * PIL_tppPilha ;
 
 /***********************************************************************
 *
-*  $FC Função: PIL Adicionar elemento na pilha
+*  $FC Função: PIL &Adicionar elemento na pilha
 *
 *  $ED Descrição da função
 *     Adiciona um elemento no topo da pilha.
@@ -151,7 +151,7 @@ typedef struct PIL_tgPilha * PIL_tppPilha ;
 	
 /***********************************************************************
 *	
-*  $FC Função: PIL Obter valor do elemento no topo
+*  $FC Função: PIL &Obter valor do elemento no topo
 *  $EP Parâmetros
 *	  pPilha - endereço da pilha que deseja-se observar.
 *	  Valor - parâmetro que receberá o valor contido no
