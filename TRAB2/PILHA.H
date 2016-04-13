@@ -64,13 +64,13 @@ typedef struct PIL_tgPilha * PIL_tppPilha ;
          PIL_CondRetErroEstrutura = 2 ,
                /* Estrutura da pilha está errada */
 
-         PIL_CondRetPilhaNaoExiste = 4 ,
+         PIL_CondRetPilhaNaoExiste = 3 ,
                /* Pilha não existe */
 
-         PIL_CondRetPilhaVazia = 5 ,
+         PIL_CondRetPilhaVazia = 4 ,
                /* Pilha está vazia */
 
-         PIL_CondRetFaltouMemoria = 8
+         PIL_CondRetFaltouMemoria = 5
                /* Faltou memória ao alocar dados */
 
    } PIL_tpCondRet ;
