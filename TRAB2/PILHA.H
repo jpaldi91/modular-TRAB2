@@ -2,7 +2,7 @@
 #define PILHA_
 /***************************************************************************
 *
-*  $MCD Módulo de definição: Módulo pilha
+*  $MCD Módulo de definição: Módulo pilha genérica
 *
 *  Arquivo gerado:              PILHA.H
 *  Letras identificadoras:      PIL
@@ -17,16 +17,19 @@
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
+*	  2.0	   jpd	16/abr/2016 Corrigiu o módulo para o uso de listas
 *	  1.0	   gdl	07/04/2016	Início do desenvolvimento 
 *
 *  $ED Descrição do módulo
 *     Este módulo implementa um conjunto simples de funções para criar e
 *     explorar pilhas genéricas.
 *     Ao iniciar a execução do programa não existe pilha.
-*	  O módulo de pilha é formado por duas estruturas a da própria pilha
-*	  e a estrutura elemento.
-*	  A estrutura pilha possui um ponteiro para o elemento no topo da pilha.
-*	  A estrutura elemento possui a informação armazenada e um ponteiro para o elemento anterior.
+*	  O módulo de pilha é, essencialmente, o módulo de listas, porém com algumas
+*	  diferenças a serem respeitadas.
+*	  Todo elemento incluído na pilha é adicionado no final da mesma. Chamaremos
+*	  o final da pilha de "topo".
+*	  O elemento corrente da pilha aponta sempre para o topo da mesma.
+*	  Só é permitido remover elementos do topo da pilha.
 *	  As pilhas poderão estar vazias. Neste caso o valor do elemento no
 *	  topo da pilha será NULL.
 *
@@ -42,10 +45,6 @@
 
 /***** Declarações exportadas pelo módulo *****/
 
-/* Tipo referência para uma pilha */
-
-typedef struct PIL_tgPilha * PIL_tppPilha ;
-
 /***********************************************************************
 *
 *  $TC Tipo de dados: PIL Condicoes de retorno
@@ -55,22 +54,16 @@ typedef struct PIL_tgPilha * PIL_tppPilha ;
 
    typedef enum {
 
-         PIL_CondRetOK = 0 ,
-               /* Executou correto */
+         PIL_CondRetOK ,
+               /* Concluiu corretamente */
 
-         PIL_CondRetNaoCriouElemento = 1 ,
-               /* Não criou Elemento */
+		 PIL_CondRetPilhaVazia ,
+				/* A pilha não contém elementos */
 
-         PIL_CondRetErroEstrutura = 2 ,
-               /* Estrutura da pilha está errada */
-
-         PIL_CondRetPilhaNaoExiste = 3 ,
+         PIL_CondRetPilhaNaoExiste ,
                /* Pilha não existe */
 
-         PIL_CondRetPilhaVazia = 4 ,
-               /* Pilha está vazia */
-
-         PIL_CondRetFaltouMemoria = 5
+         PIL_CondRetFaltouMemoria
                /* Faltou memória ao alocar dados */
 
    } PIL_tpCondRet ;
@@ -88,7 +81,23 @@ typedef struct PIL_tgPilha * PIL_tppPilha ;
 ***********************************************************************/
 
 
-   PIL_tpCondRet PIL_CriarPilha( PIL_tppPilha * ppPilha ) ;
+   PIL_tpCondRet PIL_CriarPilha( LIS_tppLista * ppPilha ) ;
+
+
+/***********************************************************************
+*
+*  $FC Função: PIL Esvaziar pilha
+*
+*  $ED Descrição da função
+*     Elimina todos os elementos, sem contudo eliminar a pilha
+*
+*  $FV Valor retornado
+*     PIL_CondRetOK
+*
+***********************************************************************/
+
+
+   PIL_tpCondRet PIL_EsvaziarPilha(LIS_tppLista pPilha) ;
 
 
 /***********************************************************************
@@ -104,7 +113,7 @@ typedef struct PIL_tgPilha * PIL_tppPilha ;
 *
 ***********************************************************************/
 
-   PIL_tpCondRet PIL_DestruirPilha( PIL_tppPilha pPilha ) ;
+   PIL_tpCondRet PIL_DestruirPilha(LIS_tppLista pPilha) ;
 
 
 /***********************************************************************
@@ -122,12 +131,11 @@ typedef struct PIL_tgPilha * PIL_tppPilha ;
 *
 *  $FV Valor retornado
 *     PIL_CondRetOK
-*     PIL_CondRetErroEstrutura
 *     PIL_CondRetFaltouMemoria
 *
 ***********************************************************************/
 
-   PIL_tpCondRet PIL_Empilha( PIL_tppPilha pPilha, void Valor ) ;
+   PIL_tpCondRet PIL_Empilha(LIS_tppLista pPilha, void * Valor) ;
 
 /***********************************************************************
 *
@@ -142,12 +150,11 @@ typedef struct PIL_tgPilha * PIL_tppPilha ;
 *
 *  $FV Valor retornado
 *	  PIL_CondRetOK
-*	  PIL_CondRet
 *	  PIL_CondRetPilhaVazia
 *
 ***********************************************************************/
 
-	PIL_tpCondRet PIL_Desempilha (PIL_tppPilha pPilha) ;
+	PIL_tpCondRet PIL_Desempilha(LIS_tppLista pPilha) ;
 	
 /***********************************************************************
 *	
@@ -163,7 +170,7 @@ typedef struct PIL_tgPilha * PIL_tppPilha ;
 *
 ***********************************************************************/
 
-	PIL_tpCOndRet PIL_ObterValor(PIL_tppPilha, void *Valor) ;
+	PIL_tpCondRet PIL_ObterValor(LIS_tppLista pPilha, void *pValor) ;
 	
 #undef PILHA_EXT
 

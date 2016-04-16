@@ -1,0 +1,51 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: TRAB2
+!!!      Script de teste:     TestePilha.script
+
+!!!    0  Linha:     1  // Script:    Testepilha.script 
+!!!    0  Linha:     2  // Autores:   Guido Dowsley Paes Leme Ribeiro 
+!!!    0  Linha:     3  //            José Paulo de Almeida Diniz 
+!!!    0  Linha:     4  // Data:      22/03/2016 
+!!!    0  Linha:     5  // Propósito: Testar o módulo pilha genérica 
+!!!    0  Linha:     6  // 
+!!!    0  Linha:     7  // Este teste é completo 
+!!!    0  Linha:     8  // 
+   10  == Criar a pilha 0
+   13  == Verificar ObterValor relativo a pilha vazia
+   16  == Inserir elemento em pilha vazia
+   20  == Inserir elemento
+   24  == Inserir elemento
+   28  == Excluir elemento
+   32  == Excluir elemento
+   36  == Excluir elemento, único
+   40  == Ver se a pilha ficou vazia
+   43  == Destruir a pilha
+   46  == Criar uma pilha com dois elementos
+   51  == Esvaziar a pilha e ver se ficou vazia
+   55  == Destruir a pilha
+   58  == Criar uma pilha com quatro elementos
+   65  == Verificar a pilha do topo para a base
+   75  == Testar excluir elemento de lista vazia
+   78  == Destruir a pilha
+   81  ==Criar pilha  com quatro elementos
+   88  ==Testar a recuperação de erro
+>>>    1  Linha:    89  Endereço obtido errado. Deveria ser: 0040F959  É: 0040F95B
+<<<    0  Linha:    90  Falha esperada foi recuperada. 
+   92  ==Destruir a pilha
+   95  ==Criar pilha com um elemento
+  100  ==Destruir a pilha
+  103  ==Cria pilha vazia
+  106  ==Excluir elemento na pilha vazia
+  109  ==Destruir pilha
+!!!    0  Linha:   112  // fim 
+
+!!! Número de linhas lidas:         112
+!!! Número de casos de teste:        25
+!!! Número comandos corretos:        50
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

@@ -1,5 +1,5 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: PIL  Módulo pilha
+*  $MCI Módulo de implementação: PIL  Módulo pilha genérica
 *
 *  Arquivo gerado:              PILHA.c
 *  Letras identificadoras:      PIL
@@ -14,52 +14,18 @@
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
+*	  2		  jpd	16/abr/2016 Corrigiu o módulo para o uso de listas
 *     1       gdl   11/abr/2016 Início do desenvolvimento
 *
 ***************************************************************************/
 
 #include<stdio.h>
 
-
-
 #define PILHA_OWN
 #include "PILHA.h"
 #include "LISTA.h"
 #undef PILHA_OWN
 
-/***********************************************************************
-*
-*  $TC Tipo de dados: PIL Descritor do elemento da pilha
-*
-*
-***********************************************************************/
-
-typedef struct tgElemPilha{
-	void* Valor;
-		/* Valor contido no elemento */
-	struct tgElemPilha *pProx;
-		/* Ponteiro para o próximo elemento da pilha */	
-} tpElemPilha;
-
-/***********************************************************************
-*
-*  $TC Tipo de dados: PIL Descritor da pilha
-*
-*
-***********************************************************************/
-
-typedef struct PIL_tgPilha{
-	tpElemPilha *pPrim;
-		/* Ponteiro para o topo da pilha */
-} tpPilha;
-
-/***** Protótipos das funções encapsuladas no módulo *****/
-
-   static void LiberarElemento( PIL_tppPilha   pPilha, tpElemPilha  * pElem   ) ;
-
-   static tpElemPil * CriarElemento( PIL_tppPilha pPilha, void *Valor  ) ;
-
-   static void DestroiPilha( PIL_tppPilha pPilha ) ;
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
@@ -68,37 +34,40 @@ typedef struct PIL_tgPilha{
 *  Função: PIL  &Criar Pilha
 *  ****/
 
-	 PIL_tpCondRet PIL_CriarPilha( PIL_tppPilha * ppPilha )
+	 PIL_tpCondRet PIL_CriarPilha( LIS_tppLista * ppPilha )
 	 {
-		 PIL_tpPilha * pPilha = NULL;
-		 pPilha = ( PIL_tpPilha * ) malloc( sizeof( PIL_tpPilha )) ;
-		if ( pPilha == NULL )
-		{
-			return PIL_CondRetFaltouMemoria ;
-		} /* if */
-		pPilha->pPrim = NULL;
-		
-		*ppPilha = pPilha;		
-		 
-		 return PIL_CondRetOK; 
+		 LIS_tpCondRet LIS_CondRet;
+
+		 LIS_CondRet = LIS_CriarLista ( ppPilha );
+		 if (LIS_CondRet == LIS_CondRetFaltouMemoria) {
+			 return PIL_CondRetFaltouMemoria ;
+		 } /* if */
+
+		 return PIL_CondRetOK ;
 		 
 	 } /* Fim função: PIL &Criar Pilha */
 	 
 /***************************************************************************
 *
+*  Função: PIL Esvaziar Pilha
+*  ****/
+
+	PIL_tpCondRet PIL_EsvaziarPilha(LIS_tppLista pPilha)
+	{
+		LIS_EsvaziarLista ( pPilha ) ;
+
+		return PIL_CondRetOK;
+	}/* Fim função: PIL Destruir Pilha */
+
+/***************************************************************************
+*
 *  Função: PIL Destruir pilha
 *  ****/
 
-	PIL_tpCondRet PIL_DestruirPilha(PIL_tppPilha pPilha)
+	PIL_tpCondRet PIL_DestruirPilha(LIS_tppLista pPilha)
 	{
-		if(pPilha != NULL){
-			if (pPrim != NULL){
-				DestroiPilha(pPilha->pPrim);
-			}
-		}
-		else
-			return PIL_CondRetPilhaNaoExiste;
-		
+		LIS_DestruirLista ( pPilha ) ;
+
 		return PIL_CondRetOK;
 	}/* Fim função: PIL Destruir Pilha */
 
@@ -107,26 +76,16 @@ typedef struct PIL_tgPilha{
 *  Função: PIL &Adicionar elemento na pilha
 *  ****/
 
-	PIL_tpCondRet PIL_Empilha(PIL_tppPilha pPilha, void * Valor)
+	PIL_tpCondRet PIL_Empilha(LIS_tppLista pPilha, void * Valor)
 	{
-	
-		tpElemPilha *pElem;
-		
-		if(pPilha == NULL)
-			return PIL_CondRetPilhaNaoExiste;
-		
-		pElem = CriarElemento(pPilha, Valor ) ;
-		if (pElem == NULL)
-			return PIL_CondRetFaltouMemoria;
-		
-		if(pPilha->pPrim == NULL)
-			pPilha->pPrim = pElem;
-		
-		else{
-			pElem->pProx = pPilha->pPrim;
-			pPilha->pPrim = pElem;	
+		LIS_tpCondRet LIS_CondRet ;
+
+		LIS_CondRet = LIS_InserirElementoApos ( pPilha, Valor );
+
+		if (LIS_CondRet == LIS_CondRetFaltouMemoria) {
+			return PIL_CondRetFaltouMemoria ;
 		} /* if */
-		
+
 		return PIL_CondRetOK;
 	} /* Fim função: PIL &Inserir elemento na pilha */
 	
@@ -135,35 +94,38 @@ typedef struct PIL_tgPilha{
 *  Função: PIL  &Remover elemento da pilha
 *  ****/
 	
-	PIL_tpCondRet PIL_Desempilha(PIL_tppPilha pPilha){
-		
-		tpElemPilha *pElem;
-		
-		if(pPilha == NULL)
-			return PIL_CondRetPilhaNaoExiste;
-		if(pPilha->pPrim == NULL)
-			return PIL_CondRetPilhaVazia;
-		
-		pElem = pPilha->pPrim;
-		pPilha->pPrim = pElem->pProx;
-		free(pElem);
+	PIL_tpCondRet PIL_Desempilha(LIS_tppLista pPilha)
+	{
+		LIS_tpCondRet LIS_CondRet;
+
+		LIS_CondRet = LIS_ExcluirElemento ( pPilha ) ;
+		if (LIS_CondRet == LIS_CondRetListaVazia) {
+			return PIL_CondRetPilhaVazia ;
+		} /*if*/
+
 		return PIL_CondRetOK;
 	} /* Fim função: PIL &Remover elemento da pilha */
 	
 /***************************************************************************
 *
-*  Função: PIL  &Obter Valor do elemento do topo
+*  Função: PIL  &Obter referência para o valor contido no elemento do topo
 *  ****/	
 	
-	PIL_tpCOndRet PIL_ObterValor(PIL_tppPilha, void *Valor)
+	PIL_tpCondRet PIL_ObterValor(LIS_tppLista pPilha, void *pValor)
 	{
-		if(pPilha == NULL)
+		LIS_tpCondRet LIS_CondRet;
+
+		if (pPilha == NULL) {
 			return PIL_CondRetPilhaNaoExiste;
-		
-		if(pPilha->pPrim == NULL)
-			return PIL_CondRetPilhaVazia;
-		
-		*Valor = pPilha-pPrim->pValor;
+		} /* if */
+
+		LIS_CondRet = LIS_ObterValor( pPilha, pValor );
+		if (LIS_CondRet == LIS_CondRetNaoAchou) {
+			return PIL_CondRetPilhaVazia ;
+		}
+
+		//*(void **)pValor = endValor ;
+
 		return PIL_CondRetOK;
 		
 	} /* Fim função: PIL &Obter Valor do elemento do topo */

@@ -324,10 +324,7 @@
 		return LIS_CondRetNaoAchou ;
       } /* if */
 	  
-	  printf("pLista->pElemCorr->Valor = %p\n", pLista->pElemCorr->Valor);
-	  printf("pValorAntes = %p\n", *(void **)pValor);
 	  *(void **)pValor = pLista->pElemCorr->Valor ;
-	  printf("pValorDepois = %p\n", *(void **)pValor);
 	  return LIS_CondRetOK ;
 
    } /* Fim função: LIS  &Obter referência para o valor contido no elemento */

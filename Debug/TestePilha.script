@@ -1,0 +1,112 @@
+// Script:    Testepilha.script
+// Autores:   Guido Dowsley Paes Leme Ribeiro
+//            José Paulo de Almeida Diniz
+// Data:      22/03/2016
+// Propósito: Testar o módulo pilha genérica
+//
+// Este teste é completo
+//
+
+== Criar a pilha 0
+=criarpilha        0   0
+
+== Verificar ObterValor relativo a pilha vazia
+=obtervalorelem    0   0  'a'    1
+
+== Inserir elemento em pilha vazia
+=empilhar	       0   0    0
+=obtervalorelem    0   0   'a'    0
+
+== Inserir elemento
+=empilhar	       0   2	 0
+=obtervalorelem    0   2    'c'   0
+
+== Inserir elemento
+=empilhar	       0   1     0
+=obtervalorelem    0   1    'b'    0
+
+== Excluir elemento
+=obtervalorelem    0   1    'b'    0
+=desempilhar       0         0
+
+== Excluir elemento
+=obtervalorelem    0   2    'c'    0
+=desempilhar       0         0
+
+== Excluir elemento, único 
+=obtervalorelem    0   0    'a'    0
+=desempilhar       0         0
+
+== Ver se a pilha ficou vazia
+=obtervalorelem    0   8    's'    1
+
+== Destruir a pilha
+=destruirpilha     0     0
+
+== Criar uma pilha com dois elementos
+=criarpilha        1    0
+=empilhar	       1    0   0
+=empilhar	       1    1   0
+
+== Esvaziar a pilha e ver se ficou vazia
+=esvaziarpilha     1    0
+=obtervalorelem    1    5    'l'     1
+
+== Destruir a pilha
+=destruirpilha   1    0
+
+== Criar uma pilha com quatro elementos
+=criarpilha      2    0
+=empilhar	     2    0   0
+=empilhar	     2    1   0
+=empilhar	     2    2   0
+=empilhar	     2    3   0
+
+== Verificar a pilha do topo para a base
+=obtervalorelem       2    3    'd'    0
+=desempilhar		  2    0 
+=obtervalorelem       2    2    'c'    0
+=desempilhar          2    0
+=obtervalorelem       2    1    'b'    0
+=desempilhar          2    0
+=obtervalorelem       2    0    'a'    0
+=desempilhar          2    0
+
+== Testar excluir elemento de lista vazia
+=desempilhar		  2    1
+
+== Destruir a pilha
+=destruirpilha     2   0
+
+==Criar pilha  com quatro elementos
+=criarpilha     3    0
+=empilhar	    3    0   0
+=empilhar	    3    1   0
+=empilhar	    3    2   0
+=empilhar	    3    3   0
+
+==Testar a recuperação de erro
+=obtervalorelem  3    1   'b'  1
+=recuperar
+
+==Destruir a pilha
+=destruirpilha   3    0
+
+==Criar pilha com um elemento
+=criarpilha     4    0
+=empilhar	    4    6   0
+=obtervalorelem  4    6   'g'  1
+
+==Destruir a pilha
+=destruirpilha   4    0
+
+==Cria pilha vazia
+=criarpilha      5    0
+
+==Excluir elemento na pilha vazia
+=desempilhar     5    1
+
+==Destruir pilha
+=destruirpilha   5    0
+
+// fim

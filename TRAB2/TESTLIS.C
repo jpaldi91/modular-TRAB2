@@ -1,5 +1,5 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: TLIS Teste lista de símbolos
+*  $MCI Módulo de implementação: TLIS Teste lista genérica
 *
 *  Arquivo gerado:              TestLIS.c
 *  Letras identificadoras:      TLIS
@@ -229,7 +229,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
          } /* fim ativa: Testar inserir elemento apos */
 
-      /* Testar excluir simbolo */
+      /* Testar excluir elemento */
 
          else if ( strcmp( ComandoTeste , EXC_ELEM_CMD ) == 0 )
          {
@@ -273,15 +273,11 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
 			EndEsperado = &vetDado[inxDado];
 
-			printf("EndObtido = %p\n", EndObtido);
-
 			if ( EndEsperado != EndObtido ) 
 			{
 				return TST_CompararPonteiro( EndEsperado, EndObtido, "Endereço obtido errado." );
 			} /*if*/
-			printf("3\n");
-			printf("CharObtido = %c\n", *(char*)EndObtido);
-			printf("4\n");
+
             return TST_CompararChar( teste , *(char*)EndObtido ,
                          "Valor do elemento errado." ) ;
 
