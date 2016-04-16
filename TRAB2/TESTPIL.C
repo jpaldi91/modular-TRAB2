@@ -174,7 +174,7 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
 
             return TST_CompararInt( CondRetEsp , CondRet , "Retorno inesperado." ) ;
 
-         } /* fim ativa: Testar Destruir lista */
+         } /* fim ativa: Testar Destruir pilha */
 
       /* Testar inserir elemento */
 
@@ -195,9 +195,9 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
             return TST_CompararInt( CondRetEsp , CondRet ,
                      "Condicao de retorno errada ao inserir antes."                   ) ;
 
-         } /* fim ativa: Testar inserir elemento antes */
+         } /* fim ativa: Testar inserir elemento */
 
-      /* Testar excluir simbolo */
+      /* Testar excluir elemento */
 
          else if ( strcmp( ComandoTeste , DESEMPILHAR_CMD ) == 0 )
          {
@@ -215,7 +215,7 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
                       PIL_Desempilha( vtPilhas[ inxPilha ] ) ,
                      "Condição de retorno errada ao excluir."   ) ;
 
-         } /* fim ativa: Testar excluir simbolo */
+         } /* fim ativa: Testar excluir elemento */
 
       /* Testar obter valor do elemento corrente */
 
@@ -225,8 +225,7 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
             numLidos = LER_LerParametros( "iici" ,
                        &inxPilha , &inxDado , &teste , &ValEsp ) ;
 
-            if ( ( numLidos != 4 )
-              || ( ! ValidarInxPilha( inxPilha , NAO_VAZIO )) )
+            if ( numLidos != 4 )
             {
                return TST_CondRetParm ;
             } /* if */
@@ -253,7 +252,7 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
 
 	  return TST_CondRetNaoConhec ;
 
-   } /* Fim função: TLIS &Testar lista */
+   } /* Fim função: TPIL &Testar pilha */
 
 
 /*****  Código das funções encapsuladas no módulo  *****/
@@ -290,7 +289,6 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
          
       return TRUE ;
 
-   } /* Fim função: TLIS -Validar indice de lista */
+   } /* Fim função: TLIS -Validar indice de pilha */
 
-/********** Fim do módulo de implementação: TLIS Teste lista de símbolos **********/
-
+/********** Fim do módulo de implementação: TLIS Teste pilha genérica **********/

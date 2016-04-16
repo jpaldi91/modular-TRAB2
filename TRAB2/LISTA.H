@@ -164,6 +164,9 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *  $ED Descrição da função
 *     Elimina todos os elementos, sem contudo eliminar a lista
 *
+*	$FV Valor retornado
+*     LIS_CondRetOK    - esvaziou sem problemas
+*
 *  $EP Parâmetros
 *     pLista - ponteiro para a lista a ser esvaziada
 *
@@ -319,6 +322,9 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *  $EP Parâmetros
 *     pLista - ponteiro para a lista a manipular
 *
+*	$FV Valor retornado
+*     LIS_CondRetOK    - alterou pElemCorr sem problemas
+*
 *  $AE Assertivas de entrada
 *	 - pLista aponta para a lista que deseja-se percorrer
 *	 - valem as assertivas estruturais da lista duplamente encadeada com cabeça
@@ -342,6 +348,9 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 *  $EP Parâmetros
 *     pLista - ponteiro para a lista a manipular
+*
+*	$FV Valor retornado
+*     LIS_CondRetOK    - alterou pElemCorr sem problemas
 *
 *  $AE Assertivas de entrada
 *	 - pLista aponta para a lista que deseja-se percorrer

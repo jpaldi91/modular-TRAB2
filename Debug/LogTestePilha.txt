@@ -6,7 +6,7 @@
 !!!    0  Linha:     1  // Script:    Testepilha.script 
 !!!    0  Linha:     2  // Autores:   Guido Dowsley Paes Leme Ribeiro 
 !!!    0  Linha:     3  //            José Paulo de Almeida Diniz 
-!!!    0  Linha:     4  // Data:      22/03/2016 
+!!!    0  Linha:     4  // Data:      16/04/2016 
 !!!    0  Linha:     5  // Propósito: Testar o módulo pilha genérica 
 !!!    0  Linha:     6  // 
 !!!    0  Linha:     7  // Este teste é completo 
@@ -28,21 +28,23 @@
    65  == Verificar a pilha do topo para a base
    75  == Testar excluir elemento de lista vazia
    78  == Destruir a pilha
-   81  ==Criar pilha  com quatro elementos
-   88  ==Testar a recuperação de erro
->>>    1  Linha:    89  Endereço obtido errado. Deveria ser: 0040F959  É: 0040F95B
-<<<    0  Linha:    90  Falha esperada foi recuperada. 
-   92  ==Destruir a pilha
-   95  ==Criar pilha com um elemento
-  100  ==Destruir a pilha
-  103  ==Cria pilha vazia
-  106  ==Excluir elemento na pilha vazia
-  109  ==Destruir pilha
-!!!    0  Linha:   112  // fim 
+   81  == Obter valor em pilha destruida
+   84  ==Criar pilha  com quatro elementos
+   91  ==Testar a recuperação de erro
+>>>    1  Linha:    92  Endereço obtido errado. Deveria ser: 0052F955  É: 0052F957
+<<<    0  Linha:    93  Falha esperada foi recuperada. 
+   95  ==Destruir a pilha
+   98  ==Criar pilha com um elemento
+  103  ==Destruir a pilha
+  106  ==Cria pilha vazia
+  109  ==Excluir elemento na pilha vazia
+  112  ==Destruir pilha
+  115  == Obter valor em pilha inexistente
+!!!    0  Linha:   118  // fim 
 
-!!! Número de linhas lidas:         112
-!!! Número de casos de teste:        25
-!!! Número comandos corretos:        50
+!!! Número de linhas lidas:         118
+!!! Número de casos de teste:        27
+!!! Número comandos corretos:        52
 !!! Número de falhas encontradas:     0
 
 !!! Não foram encontrados problemas

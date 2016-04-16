@@ -78,6 +78,13 @@
 *	  PIL_CondRetOK
 *	  PIL_COndRetFaltouMemoria
 *
+*	$AE Assertivas de entrada
+*	  - ppPilha recebe o endereço da pilha a ser criada
+*
+*	$AS Assertivas de saida
+*	  - A pilha foi criada e seu endereço foi inserido em ppPilha
+*	  - A pilha está vazia. Portanto não possui elemento corrente.
+*
 ***********************************************************************/
 
 
@@ -93,6 +100,13 @@
 *
 *  $FV Valor retornado
 *     PIL_CondRetOK
+*
+*  $AE Assertivas de Entrada
+*	 - pPilha aponta para a pilha a ser esvaziada
+*	 - valem as assertivas estruturais da pilha
+*
+*  $AE Assertivas de Saida
+*	 - a pilha está vazia. Portanto não possui elemento corrente.
 *
 ***********************************************************************/
 
@@ -110,6 +124,14 @@
 *
 *  $FV Valor retornado
 *     PIL_CondRetOK
+*
+*	$AE Assertivas de Entrada
+*	  - pPilha aponta para a Pilha a ser destruida
+*	  - valem as assertivas estruturais da Pilha
+*
+*	$AS Assertivas de Saida
+*	  - Pilha foi esvaziada e excluida
+*	  - pPilha agora tem valor NULL
 *
 ***********************************************************************/
 
@@ -133,6 +155,16 @@
 *     PIL_CondRetOK
 *     PIL_CondRetFaltouMemoria
 *
+*  $AE Assertivas de entrada
+*	 - pPilha aponta para a pilha onde deseja-se inserir o elemento
+*	 - valem as assertivas estruturais da pilha
+*    - se a pilha estiver vazia, sera criado o primeiro elemento dela
+*
+*  $AS Assertivas de saida
+*    - elemento foi criado no topo da pilha
+*	 - pElemCorr agora aponta para o ultimo elemento criado
+*	 - valem as assertivas estruturais da pilha
+*
 ***********************************************************************/
 
    PIL_tpCondRet PIL_Empilha(LIS_tppLista pPilha, void * Valor) ;
@@ -152,6 +184,14 @@
 *	  PIL_CondRetOK
 *	  PIL_CondRetPilhaVazia
 *
+*  $AE Assertivas de entrada
+*	 - pLista aponta para pilha onde deseja-se excluir o elemento
+*	 - valem as assertivas estruturais da pilha
+*
+*  $AS Assertivas de saida
+*    - elemento foi excluido
+*	 - valem as assertivas estruturais da pilha
+*
 ***********************************************************************/
 
 	PIL_tpCondRet PIL_Desempilha(LIS_tppLista pPilha) ;
@@ -159,14 +199,24 @@
 /***********************************************************************
 *	
 *  $FC Função: PIL &Obter valor do elemento no topo
+*
 *  $EP Parâmetros
 *	  pPilha - endereço da pilha que deseja-se observar.
 *	  Valor - parâmetro que receberá o valor contido no
 *	  elemento. Este parâmetro é passado por referência
+*
 *  $FV Valor retornado
 *	  PIL_CondRetOK
 *	  PIL_CondRetPilhaNaoExiste
 *	  PIL_CondRetPilhaVazia
+*
+*  $AE Assertivas de entrada
+*	 - pLista aponta para a pilha onde deseja-se obter o valor do elemento topo
+*	 - valem as assertivas estruturais da lista duplamente encadeada com cabeça
+*
+*  $AS Assertivas de saida
+*	 - pValor contem o endereço do valor desejado do topo da pilha
+*	 - valem as assertivas estruturais da pilha
 *
 ***********************************************************************/
 

@@ -124,8 +124,6 @@
 			return PIL_CondRetPilhaVazia ;
 		}
 
-		//*(void **)pValor = endValor ;
-
 		return PIL_CondRetOK;
 		
 	} /* Fim função: PIL &Obter Valor do elemento do topo */

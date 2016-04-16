@@ -147,7 +147,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
          } /* fim ativa: Testar CriarLista */
 
-      /* Testar Esvaziar lista lista */
+      /* Testar Esvaziar lista */
 
          else if ( strcmp( ComandoTeste , ESVAZIAR_LISTA_CMD ) == 0 )
          {
@@ -164,7 +164,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             return TST_CompararInt( CondRetEsp, LIS_EsvaziarLista( vtListas[ inxLista ] ),
 					"Retorno inesperado." );
 
-         } /* fim ativa: Testar Esvaziar lista lista */
+         } /* fim ativa: Testar Esvaziar lista */
 
       /* Testar Destruir lista */
 
@@ -247,7 +247,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
                       LIS_ExcluirElemento( vtListas[ inxLista ] ) ,
                      "Condição de retorno errada ao excluir."   ) ;
 
-         } /* fim ativa: Testar excluir simbolo */
+         } /* fim ativa: Testar excluir elemento */
 
       /* Testar obter valor do elemento corrente */
 

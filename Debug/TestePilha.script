@@ -1,7 +1,7 @@
 // Script:    Testepilha.script
 // Autores:   Guido Dowsley Paes Leme Ribeiro
 //            José Paulo de Almeida Diniz
-// Data:      22/03/2016
+// Data:      16/04/2016
 // Propósito: Testar o módulo pilha genérica
 //
 // Este teste é completo
@@ -78,6 +78,9 @@
 == Destruir a pilha
 =destruirpilha     2   0
 
+== Obter valor em pilha destruida
+=obtervalorelem		  2    0    'a'    2
+
 ==Criar pilha  com quatro elementos
 =criarpilha     3    0
 =empilhar	    3    0   0
@@ -108,5 +111,8 @@
 
 ==Destruir pilha
 =destruirpilha   5    0
+
+== Obter valor em pilha inexistente
+=obtervalorelem		  9    2    'b'    2
 
 // fim
