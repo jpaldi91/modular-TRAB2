@@ -1,0 +1,55 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: TRAB2
+!!!      Script de teste:     TesteMatriz.script
+
+!!!    0  Linha:     1  // Script:    TesteMat.script 
+!!!    0  Linha:     2  // Autores:   Guido Dowsley Leme 
+!!!    0  Linha:     3  //			  José Paulo Diniz 
+!!!    0  Linha:     4  // Data:      21/abr/2016 
+!!!    0  Linha:     5  // Propósito: Testar o módulo matriz 
+!!!    0  Linha:     6  // 
+!!!    0  Linha:     7  // Matriz 11 é sempre null 
+!!!    0  Linha:     8  // Este teste é completo 
+!!!    0  Linha:     9  // 
+   11  == Teste de recuperar
+>>>    1  Linha:    12  Erro nos parâmetros do comando:  =destruir  1    1
+<<<    0  Linha:    13  Falha esperada foi recuperada. 
+   15  == Criar a pilha 0
+   18  == Criar a pilha 1
+   21  == Criar a pilha 2
+   24  == Criar a matriz 0
+   27  == Inserir uma linha na matriz 0
+   30  == Inserir uma coluna na matriz 0
+   33  == Escrever na célula (0,0) da matriz 0
+   36  == Ler a célula (0,0) da matriz 0
+   39  == Inserir 4 linhas, 3 colunas, escrever e ler na célula (1,2) da matriz 0
+   50  == Verificar se a célula (1,0) da matriz 0 está vazia
+   53  == Excluir linha 1 e verificar se a célua (1,1) da matriz 0 está preenchida
+   57  == Verificar que a célula (0,1) da matriz 0 está vazia
+   60  == Excluir coluna 0 da matriz 0 e verificar se a célula (0,1) está preenchida
+   64  == Escrever e ler na célula (3,3) excluir a coluna 2 e verificar se a célula (2,3) está preenchida na matriz 0
+   70  == Excluir coluna 2 da matriz 0
+   73  == Excluir linha 3 da matriz 0
+   76  == Excluir linha 0 da matriz 0
+   79  == Verificar que a célula (0,0) da matriz 0 está preenchida
+   82  == Criar matriz passando NULL
+   85  == Inserir coluna em uma matriz nula
+   88  == Inserir linha em uma matriz nula
+   91  == Ler célula que não existe na matriz 0
+   94  == Ler célula (0,0) de uma matriz nula
+   97  == Ler célula (0,0) da matriz 0 com ponteiro de retorno nulo
+  100  == Escrever célula (0,0) de uma matriz nula
+  103  == Escrever célula que não existe na matriz 0
+  106  == Excluir coluna de uma matriz nula
+  109  == Excluir linha de uma matriz nula
+
+!!! Número de linhas lidas:         111
+!!! Número de casos de teste:        29
+!!! Número comandos corretos:        42
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

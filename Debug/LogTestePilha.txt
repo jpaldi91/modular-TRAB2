@@ -12,42 +12,94 @@
 !!!    0  Linha:     7  // Este teste é completo 
 !!!    0  Linha:     8  // 
    10  == Criar a pilha 0
+>>>    1  Linha:    11  Comando não conhecido:  =criarpilha        0   0
    13  == Verificar ObterValor relativo a pilha vazia
+>>>    2  Linha:    14  Comando não conhecido:  =obtervalorelem    0   0  'a'    1
    16  == Inserir elemento em pilha vazia
+>>>    3  Linha:    17  Comando não conhecido:  =empilhar	       0   0    0
+>>>    4  Linha:    18  Comando de teste ignorado:  =obtervalorelem    0   0   'a'    0
    20  == Inserir elemento
+>>>    5  Linha:    21  Comando não conhecido:  =empilhar	       0   2	 0
+>>>    6  Linha:    22  Comando de teste ignorado:  =obtervalorelem    0   2    'c'   0
    24  == Inserir elemento
+>>>    7  Linha:    25  Comando não conhecido:  =empilhar	       0   1     0
+>>>    8  Linha:    26  Comando de teste ignorado:  =obtervalorelem    0   1    'b'    0
    28  == Excluir elemento
+>>>    9  Linha:    29  Comando não conhecido:  =obtervalorelem    0   1    'b'    0
+>>>   10  Linha:    30  Comando de teste ignorado:  =desempilhar       0         0
    32  == Excluir elemento
+>>>   11  Linha:    33  Comando não conhecido:  =obtervalorelem    0   2    'c'    0
+>>>   12  Linha:    34  Comando de teste ignorado:  =desempilhar       0         0
    36  == Excluir elemento, único
+>>>   13  Linha:    37  Comando não conhecido:  =obtervalorelem    0   0    'a'    0
+>>>   14  Linha:    38  Comando de teste ignorado:  =desempilhar       0         0
    40  == Ver se a pilha ficou vazia
+>>>   15  Linha:    41  Comando não conhecido:  =obtervalorelem    0   8    's'    1
    43  == Destruir a pilha
+>>>   16  Linha:    44  Comando não conhecido:  =destruirpilha     0     0
    46  == Criar uma pilha com dois elementos
+>>>   17  Linha:    47  Comando não conhecido:  =criarpilha        1    0
+>>>   18  Linha:    48  Comando de teste ignorado:  =empilhar	       1    0   0
+>>>   19  Linha:    49  Comando de teste ignorado:  =empilhar	       1    1   0
    51  == Esvaziar a pilha e ver se ficou vazia
+>>>   20  Linha:    52  Comando não conhecido:  =esvaziarpilha     1    0
+>>>   21  Linha:    53  Comando de teste ignorado:  =obtervalorelem    1    5    'l'     1
    55  == Destruir a pilha
+>>>   22  Linha:    56  Comando não conhecido:  =destruirpilha   1    0
    58  == Criar uma pilha com quatro elementos
+>>>   23  Linha:    59  Comando não conhecido:  =criarpilha      2    0
+>>>   24  Linha:    60  Comando de teste ignorado:  =empilhar	     2    0   0
+>>>   25  Linha:    61  Comando de teste ignorado:  =empilhar	     2    1   0
+>>>   26  Linha:    62  Comando de teste ignorado:  =empilhar	     2    2   0
+>>>   27  Linha:    63  Comando de teste ignorado:  =empilhar	     2    3   0
    65  == Verificar a pilha do topo para a base
+>>>   28  Linha:    66  Comando não conhecido:  =obtervalorelem       2    3    'd'    0
+>>>   29  Linha:    67  Comando de teste ignorado:  =desempilhar		  2    0
+>>>   30  Linha:    68  Comando de teste ignorado:  =obtervalorelem       2    2    'c'    0
+>>>   31  Linha:    69  Comando de teste ignorado:  =desempilhar          2    0
+>>>   32  Linha:    70  Comando de teste ignorado:  =obtervalorelem       2    1    'b'    0
+>>>   33  Linha:    71  Comando de teste ignorado:  =desempilhar          2    0
+>>>   34  Linha:    72  Comando de teste ignorado:  =obtervalorelem       2    0    'a'    0
+>>>   35  Linha:    73  Comando de teste ignorado:  =desempilhar          2    0
    75  == Testar excluir elemento de lista vazia
+>>>   36  Linha:    76  Comando não conhecido:  =desempilhar		  2    1
    78  == Destruir a pilha
+>>>   37  Linha:    79  Comando não conhecido:  =destruirpilha     2   0
    81  == Obter valor em pilha destruida
+>>>   38  Linha:    82  Comando não conhecido:  =obtervalorelem		  2    0    'a'    2
    84  ==Criar pilha  com quatro elementos
+>>>   39  Linha:    85  Comando não conhecido:  =criarpilha     3    0
+>>>   40  Linha:    86  Comando de teste ignorado:  =empilhar	    3    0   0
+>>>   41  Linha:    87  Comando de teste ignorado:  =empilhar	    3    1   0
+>>>   42  Linha:    88  Comando de teste ignorado:  =empilhar	    3    2   0
+>>>   43  Linha:    89  Comando de teste ignorado:  =empilhar	    3    3   0
    91  ==Testar a recuperação de erro
->>>    1  Linha:    92  Endereço obtido errado. Deveria ser: 0052F955  É: 0052F957
-<<<    0  Linha:    93  Falha esperada foi recuperada. 
+>>>   44  Linha:    92  Comando não conhecido:  =obtervalorelem  3    1   'b'  1
+>>>   45  Linha:    93  Comando de teste ignorado:  =recuperar
    95  ==Destruir a pilha
+>>>   46  Linha:    96  Comando não conhecido:  =destruirpilha   3    0
    98  ==Criar pilha com um elemento
+>>>   47  Linha:    99  Comando não conhecido:  =criarpilha     4    0
+>>>   48  Linha:   100  Comando de teste ignorado:  =empilhar	    4    6   0
+>>>   49  Linha:   101  Comando de teste ignorado:  =obtervalorelem  4    6   'g'  1
   103  ==Destruir a pilha
+>>>   50  Linha:   104  Comando não conhecido:  =destruirpilha   4    0
   106  ==Cria pilha vazia
+>>>   51  Linha:   107  Comando não conhecido:  =criarpilha      5    0
   109  ==Excluir elemento na pilha vazia
+>>>   52  Linha:   110  Comando não conhecido:  =desempilhar     5    1
   112  ==Destruir pilha
+>>>   53  Linha:   113  Comando não conhecido:  =destruirpilha   5    0
   115  == Obter valor em pilha inexistente
-!!!    0  Linha:   118  // fim 
+>>>   54  Linha:   116  Comando não conhecido:  =obtervalorelem		  9    2    'b'    2
+!!!   54  Linha:   118  // fim 
 
 !!! Número de linhas lidas:         118
 !!! Número de casos de teste:        27
-!!! Número comandos corretos:        52
-!!! Número de falhas encontradas:     0
+!!! Número comandos corretos:         0
+!!! Número de falhas encontradas:    54
 
-!!! Não foram encontrados problemas
+!!! Foram encontrados problemas
 
 
 !!! Numero de espacos ainda alocados: 0

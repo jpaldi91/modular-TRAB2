@@ -24,8 +24,9 @@
 *     Este módulo implementa um conjunto simples de funções para criar e
 *     explorar pilhas genéricas.
 *     Ao iniciar a execução do programa não existe pilha.
-*	  O módulo de pilha é, essencialmente, o módulo de listas, porém com algumas
-*	  diferenças a serem respeitadas.
+*	  O módulo de pilha é composto por um inteiro, que guarda a quantidade de 
+*	  elementos da pilha e um ponteiro para Lista, que faz referência à lista que
+*	  contém os elementos da pilha.
 *	  Todo elemento incluído na pilha é adicionado no final da mesma. Chamaremos
 *	  o final da pilha de "topo".
 *	  O elemento corrente da pilha aponta sempre para o topo da mesma.
@@ -44,6 +45,11 @@
 #endif
 
 /***** Declarações exportadas pelo módulo *****/
+
+/* Tipo referência para uma pilha */
+
+typedef struct PIL_tagPilha * PIL_tppPilha ;
+
 
 /***********************************************************************
 *
@@ -74,6 +80,7 @@
 *
 *  $ED Descrição da função
 *     Cria uma pilha vazia e retorna a mesma por referência.
+*
 *  $FV Valor retornado
 *	  PIL_CondRetOK
 *	  PIL_COndRetFaltouMemoria
@@ -88,7 +95,7 @@
 ***********************************************************************/
 
 
-   PIL_tpCondRet PIL_CriarPilha( LIS_tppLista * ppPilha ) ;
+   PIL_tpCondRet PIL_CriarPilha( PIL_tppPilha * ppPilha ) ;
 
 
 /***********************************************************************
@@ -111,7 +118,7 @@
 ***********************************************************************/
 
 
-   PIL_tpCondRet PIL_EsvaziarPilha(LIS_tppLista pPilha) ;
+   PIL_tpCondRet PIL_EsvaziarPilha(PIL_tppPilha pPilha) ;
 
 
 /***********************************************************************
@@ -135,7 +142,7 @@
 *
 ***********************************************************************/
 
-   PIL_tpCondRet PIL_DestruirPilha(LIS_tppLista pPilha) ;
+   PIL_tpCondRet PIL_DestruirPilha(PIL_tppPilha pPilha) ;
 
 
 /***********************************************************************
@@ -167,7 +174,7 @@
 *
 ***********************************************************************/
 
-   PIL_tpCondRet PIL_Empilha(LIS_tppLista pPilha, void * Valor) ;
+   PIL_tpCondRet PIL_Empilha(PIL_tppPilha pPilha, void * Valor) ;
 
 /***********************************************************************
 *
@@ -194,7 +201,7 @@
 *
 ***********************************************************************/
 
-	PIL_tpCondRet PIL_Desempilha(LIS_tppLista pPilha) ;
+	PIL_tpCondRet PIL_Desempilha(PIL_tppPilha pPilha) ;
 	
 /***********************************************************************
 *	
@@ -220,7 +227,7 @@
 *
 ***********************************************************************/
 
-	PIL_tpCondRet PIL_ObterValor(LIS_tppLista pPilha, void *pValor) ;
+	PIL_tpCondRet PIL_ObterValor(PIL_tppPilha pPilha, void *pValor) ;
 	
 #undef PILHA_EXT
 

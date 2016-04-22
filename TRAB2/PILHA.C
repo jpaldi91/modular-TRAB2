@@ -20,12 +20,29 @@
 ***************************************************************************/
 
 #include<stdio.h>
+#include<malloc.h>
 
 #define PILHA_OWN
 #include "PILHA.h"
 #include "LISTA.h"
 #undef PILHA_OWN
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: LIS Descritor da cabeça de pilha
+*
+*
+***********************************************************************/
+
+   typedef struct PIL_tagPilha {
+
+         int numElem ;
+               /* Número de elementos da pilha */
+
+		 LIS_tppLista Lista;
+				/* Ponteiro para a lista onde serão armazenados os elementos da pilha */
+
+   } PIL_tpPilha ;
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
@@ -34,14 +51,27 @@
 *  Função: PIL  &Criar Pilha
 *  ****/
 
-	 PIL_tpCondRet PIL_CriarPilha( LIS_tppLista * ppPilha )
+	 PIL_tpCondRet PIL_CriarPilha( PIL_tppPilha * ppPilha )
 	 {
 		 LIS_tpCondRet LIS_CondRet;
+		 LIS_tppLista *pLista = NULL;
+		 PIL_tpPilha *pPilha = NULL;
 
-		 LIS_CondRet = LIS_CriarLista ( ppPilha );
+		 pLista = (LIS_tppLista*) malloc (sizeof(LIS_tppLista));
+		 pPilha = (PIL_tpPilha*) malloc (sizeof(PIL_tpPilha));
+		 pPilha->numElem = 0;
+
+		 if (pPilha == NULL || pLista == NULL) {
+			 return PIL_CondRetFaltouMemoria ;
+		 } /* if */
+
+		 LIS_CondRet = LIS_CriarLista ( pLista );
 		 if (LIS_CondRet == LIS_CondRetFaltouMemoria) {
 			 return PIL_CondRetFaltouMemoria ;
 		 } /* if */
+
+		 pPilha->Lista = *pLista;
+		 *ppPilha = pPilha;
 
 		 return PIL_CondRetOK ;
 		 
@@ -52,9 +82,10 @@
 *  Função: PIL Esvaziar Pilha
 *  ****/
 
-	PIL_tpCondRet PIL_EsvaziarPilha(LIS_tppLista pPilha)
+	PIL_tpCondRet PIL_EsvaziarPilha(PIL_tppPilha pPilha)
 	{
-		LIS_EsvaziarLista ( pPilha ) ;
+		LIS_EsvaziarLista ( pPilha->Lista ) ;
+		pPilha->numElem = 0;
 
 		return PIL_CondRetOK;
 	}/* Fim função: PIL Destruir Pilha */
@@ -64,9 +95,10 @@
 *  Função: PIL Destruir pilha
 *  ****/
 
-	PIL_tpCondRet PIL_DestruirPilha(LIS_tppLista pPilha)
+	PIL_tpCondRet PIL_DestruirPilha(PIL_tppPilha pPilha)
 	{
-		LIS_DestruirLista ( pPilha ) ;
+		LIS_DestruirLista ( pPilha->Lista ) ;
+		free(pPilha);
 
 		return PIL_CondRetOK;
 	}/* Fim função: PIL Destruir Pilha */
@@ -76,15 +108,17 @@
 *  Função: PIL &Adicionar elemento na pilha
 *  ****/
 
-	PIL_tpCondRet PIL_Empilha(LIS_tppLista pPilha, void * Valor)
+	PIL_tpCondRet PIL_Empilha(PIL_tppPilha pPilha, void * Valor)
 	{
 		LIS_tpCondRet LIS_CondRet ;
 
-		LIS_CondRet = LIS_InserirElementoApos ( pPilha, Valor );
+		LIS_CondRet = LIS_InserirElementoApos ( pPilha->Lista, Valor );
 
 		if (LIS_CondRet == LIS_CondRetFaltouMemoria) {
 			return PIL_CondRetFaltouMemoria ;
 		} /* if */
+
+		pPilha->numElem++;
 
 		return PIL_CondRetOK;
 	} /* Fim função: PIL &Inserir elemento na pilha */
@@ -94,14 +128,16 @@
 *  Função: PIL  &Remover elemento da pilha
 *  ****/
 	
-	PIL_tpCondRet PIL_Desempilha(LIS_tppLista pPilha)
+	PIL_tpCondRet PIL_Desempilha(PIL_tppPilha pPilha)
 	{
 		LIS_tpCondRet LIS_CondRet;
 
-		LIS_CondRet = LIS_ExcluirElemento ( pPilha ) ;
+		LIS_CondRet = LIS_ExcluirElemento ( pPilha->Lista ) ;
 		if (LIS_CondRet == LIS_CondRetListaVazia) {
 			return PIL_CondRetPilhaVazia ;
 		} /*if*/
+
+		pPilha->numElem--;
 
 		return PIL_CondRetOK;
 	} /* Fim função: PIL &Remover elemento da pilha */
@@ -111,7 +147,7 @@
 *  Função: PIL  &Obter referência para o valor contido no elemento do topo
 *  ****/	
 	
-	PIL_tpCondRet PIL_ObterValor(LIS_tppLista pPilha, void *pValor)
+	PIL_tpCondRet PIL_ObterValor(PIL_tppPilha pPilha, void *pValor)
 	{
 		LIS_tpCondRet LIS_CondRet;
 
@@ -119,7 +155,7 @@
 			return PIL_CondRetPilhaNaoExiste;
 		} /* if */
 
-		LIS_CondRet = LIS_ObterValor( pPilha, pValor );
+		LIS_CondRet = LIS_ObterValor( pPilha->Lista, pValor );
 		if (LIS_CondRet == LIS_CondRetNaoAchou) {
 			return PIL_CondRetPilhaVazia ;
 		}

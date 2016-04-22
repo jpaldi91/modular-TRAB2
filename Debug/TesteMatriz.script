@@ -1,0 +1,111 @@
+// Script:    TesteMat.script
+// Autores:   Guido Dowsley Leme
+//			  José Paulo Diniz
+// Data:      21/abr/2016
+// Propósito: Testar o módulo matriz
+//
+// Matriz 11 é sempre null
+// Este teste é completo
+//
+
+== Teste de recuperar
+=destruir  1    1
+=recuperar
+
+== Criar a pilha 0
+=criarpil  0    0
+
+== Criar a pilha 1
+=criarpil  1    0
+
+== Criar a pilha 2
+=criarpil  2    0
+
+== Criar a matriz 0
+=criar     0    0
+
+== Inserir uma linha na matriz 0
+=inslin    0    0
+
+== Inserir uma coluna na matriz 0
+=inscol    0    0
+
+== Escrever na célula (0,0) da matriz 0
+=esccel    0    0    0    0    0
+
+== Ler a célula (0,0) da matriz 0
+=lercel    0    0    0    0    0
+
+== Inserir 4 linhas, 3 colunas, escrever e ler na célula (1,2) da matriz 0
+=inslin    0    0
+=inslin    0    0
+=inslin    0    0
+=inslin    0    0
+=inscol    0    0
+=inscol    0    0
+=inscol    0    0
+=esccel    0    1    2    1    0
+=lercel    0    1    2    1    0
+
+== Verificar se a célula (1,0) da matriz 0 está vazia
+=lercel    0    1    0    3    0
+
+== Excluir linha 1 e verificar se a célua (1,1) da matriz 0 está preenchida
+=exclin    0    1    0
+=lercel    0    1    1    1    0
+
+== Verificar que a célula (0,1) da matriz 0 está vazia
+=lercel    0    0    1    3    0
+
+== Excluir coluna 0 da matriz 0 e verificar se a célula (0,1) está preenchida
+=exccol    0    0    0
+=lercel    0    0    1    1    0
+
+== Escrever e ler na célula (3,3) excluir a coluna 2 e verificar se a célula (2,3) está preenchida na matriz 0
+=esccel    0    3    3    2    0
+=lercel    0    3    3    2    0
+=exccol    0    2    0
+=lercel    0    2    3    2    0
+
+== Excluir coluna 2 da matriz 0
+=exccol    0    2    0
+
+== Excluir linha 3 da matriz 0
+=exclin    0    3    0
+
+== Excluir linha 0 da matriz 0
+=exclin    0    0    0
+
+== Verificar que a célula (0,0) da matriz 0 está preenchida
+=lercel    0    0    0    1    0
+
+== Criar matriz passando NULL
+=criar     11   5
+
+== Inserir coluna em uma matriz nula
+=inscol    11   2
+
+== Inserir linha em uma matriz nula
+=inslin    11   2
+
+== Ler célula que não existe na matriz 0
+=lercel    0    9    9    0    3
+
+== Ler célula (0,0) de uma matriz nula
+=lercel    11   0    0    0    2
+
+== Ler célula (0,0) da matriz 0 com ponteiro de retorno nulo
+=lercel    0    -1   -1   0    5
+
+== Escrever célula (0,0) de uma matriz nula
+=esccel   11    0    0    0    2
+
+== Escrever célula que não existe na matriz 0
+=esccel    0    9    9    0    3
+
+== Excluir coluna de uma matriz nula
+=exccol   11    0    2
+
+== Excluir linha de uma matriz nula
+=exclin   11    0    2
+

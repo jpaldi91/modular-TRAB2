@@ -47,7 +47,7 @@ static const char DESEMPILHAR_CMD         [ ] = "=desempilhar"    ;
 #define DIM_VT_PILHA   10
 #define DIM_VALOR     100
 
-LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
+PIL_tppPilha   vtPilhas[ DIM_VT_PILHA ] ;
 
 /***** Protótipos das funções encapsuladas no módulo *****/
 
@@ -132,7 +132,7 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
 			CondRet = PIL_CriarPilha( &vtPilhas[ inxPilha ] ) ;
 
             return TST_CompararInt( CondRetEsp , CondRet ,
-               "Erro ao criar lista."  ) ;
+               "Erro ao criar pilha."  ) ;
 
          } /* fim ativa: Testar CriarPilha */
 
@@ -232,7 +232,7 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
 
 			CondRet = PIL_ObterValor( vtPilhas[ inxPilha ], &EndObtido );
             
-			if ( CondRet != LIS_CondRetOK )
+			if ( CondRet != PIL_CondRetOK )
             {
                return TST_CompararInt( ValEsp , CondRet ,
                          "Erro ao obter endereço do elemento." ) ;
@@ -260,7 +260,7 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
 
 /***********************************************************************
 *
-*  $FC Função: TLIS -Validar indice de pilha
+*  $FC Função: TPIL -Validar indice de pilha
 *
 ***********************************************************************/
 
@@ -289,6 +289,6 @@ LIS_tppLista   vtPilhas[ DIM_VT_PILHA ] ;
          
       return TRUE ;
 
-   } /* Fim função: TLIS -Validar indice de pilha */
+   } /* Fim função: TPIL -Validar indice de pilha */
 
-/********** Fim do módulo de implementação: TLIS Teste pilha genérica **********/
+/********** Fim do módulo de implementação: TPIL Teste pilha genérica **********/
